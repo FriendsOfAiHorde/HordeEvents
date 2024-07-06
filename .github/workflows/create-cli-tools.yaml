@@ -23,7 +23,8 @@ jobs:
         run: |
           cd cli-tools-src
           go build -o cli-tools
-          mv cli-tools ..
+          GOOS=windows go build -o cli-tools.exe
+          mv cli-tools* ..
       - name: Git Commit/Push Changes
         uses: actions-x/commit@v6
         with:
