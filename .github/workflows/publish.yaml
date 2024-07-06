@@ -5,6 +5,8 @@ on:
       - main
     paths-ignore:
       - results.*
+      - README.md
+      - .github/**/*
 
 concurrency:
   group: publish
