@@ -23,5 +23,13 @@
     "validUntil": "2024-07-08T17:06:00+02:00",
     "id": "73fdfa7f-2920-4208-8555-16e665bdf67e",
     "link": "https://discord.com/channels/781145214752129095/1258438740624277505/1258438743996764251"
+  },
+  {
+    "title": "Example Artbot-only message",
+    "description": "This is an example Artbot-only notification",
+    "id": "1709a509-e2bc-40c6-872d-f0d5e98992c2",
+    "validSince": "2024-07-04T17:06:00+02:00",
+    "validUntil": "2024-07-08T17:06:00+02:00",
+    "limitedTo": ["artbot"]
   }
 ]
