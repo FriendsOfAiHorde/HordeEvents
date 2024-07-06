@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - cli-tools/**/*
+      - cli-tools-src/**/*
   workflow_dispatch:
 
 concurrency:
@@ -21,9 +21,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Build
         run: |
-          cd cli-tools
+          cd cli-tools-src
           go build -o cli-tools
-          mv cli-tools ../
+          mv cli-tools ..
       - name: Git Commit/Push Changes
         uses: actions-x/commit@v6
         with:
