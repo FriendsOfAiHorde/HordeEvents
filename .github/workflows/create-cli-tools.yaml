@@ -1,34 +1,28 @@
-name: Publish
+name: Create CLI tools
 on:
   push:
     branches:
       - main
-    paths-ignore:
-      - results.*
-      - README.md
-      - .github/**/*
+    paths:
       - cli-tools/**/*
 
 concurrency:
-  group: publish
+  group: cli-tools
   cancel-in-progress: false
 
 jobs:
   publish:
-    name: Publish
+    name: Create CLI tools
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.3'
-      - name: Install dependencies
-        run: composer install
-      - name: Generate files
-        run: php process.php
+      - name: Build
+        run: |
+          cd cli-tools
+          go build -o cli-tools
+          mv cli-tools ..
       - name: Git Commit/Push Changes
         uses: actions-x/commit@v6
         with:

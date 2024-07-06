@@ -150,7 +150,7 @@ func handleAdd(config map[string]map[string]string) int {
 }
 
 func addJson(data map[string]interface{}) bool {
-	filename := "../source.json"
+	filename := "source.json"
 
 	jsonFile, err := os.Open(filename)
 	if err != nil {
