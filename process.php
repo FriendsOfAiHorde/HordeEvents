@@ -40,6 +40,7 @@ try {
         }
     }
 
+    $results[COMMON] ??= [];
     foreach ($results as $key => $items) {
         if ($key === COMMON) {
             continue;
