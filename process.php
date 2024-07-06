@@ -40,6 +40,13 @@ try {
         }
     }
 
+    $clients = json_decode(file_get_contents(__DIR__ . '/clients.json'));
+    assert(is_array($clients));
+    foreach ($clients as $client) {
+        assert(is_string($client));
+        $results[$client] ??= [];
+    }
+
     $results[COMMON] ??= [];
     foreach ($results as $key => $items) {
         if ($key === COMMON) {
