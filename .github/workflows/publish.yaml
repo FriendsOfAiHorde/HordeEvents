@@ -1,0 +1,25 @@
+name: Publish
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - results.*
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - name: Generate files
+        run: php process.php
+      - name: Git Commit/Push Changes
+        uses: actions-x/commit@v6
+        with:
+          message: Generated from source.json
