@@ -1,2 +1,10 @@
 [
+  {
+    "title": "HordeNG got notifications",
+    "description": "HordeNG has implemented notifications and this is just to let you know that you can go over to settings and disable them.",
+    "limitedTo": ["horde-ng"],
+    "validSince": "2024-07-06T15:00:00Z",
+    "validUntil": "2024-07-14T15:00:00Z",
+    "id": "6692ec8b-1723-4539-a1bc-126d0bad606e"
+  }
 ]
