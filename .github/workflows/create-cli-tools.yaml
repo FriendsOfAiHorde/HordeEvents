@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - cli-tools/**/*
+  workflow_dispatch:
 
 concurrency:
   group: cli-tools
