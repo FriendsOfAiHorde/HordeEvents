@@ -1,17 +1,2 @@
 [
-  {
-    "id": "a9707dba-bb2e-41ed-bef0-a191116ccec9",
-    "title": "Some new event!",
-    "description": "This is a new event",
-    "validSince": "2024-07-06T19:00:00+02:00",
-    "validUntil": "2024-07-07T19:00:00Z"
-  },
-  {
-    "id": "880e7a59-2795-41b9-a73f-c5e2b1b057a6",
-    "title": "Welcome to HordeNG!",
-    "description": "Test",
-    "validSince": "2024-07-06T19:00:00+02:00",
-    "validUntil": "2024-07-07T19:00:00Z",
-    "limitedTo": ["horde-ng"]
-  }
 ]
