@@ -247,6 +247,7 @@ func handleRemove(config map[string]map[string]string) int {
 	writeJson(jsonMap)
 
 	if found {
+		fmt.Println("The event has been successfully removed")
 		return 0
 	}
 	fmt.Println("Event with id", id, "was not found")
