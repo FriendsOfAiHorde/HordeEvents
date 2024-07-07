@@ -23,3 +23,7 @@ Currently generated files:
   contain both the common events and events related only to HordeNG
 - [results.artbot.json](results.artbot.json) and [results.artbot.min.json](results.artbot.min.json) - these
   contain both the common events and events related only to Artbot
+
+### CLI tools
+
+Simple CLI tools for generating JSON are available for Linux ([cli-tools](cli-tools)) and Windows ([cli-tools.exe](cli-tools.exe)).
