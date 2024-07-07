@@ -13,6 +13,84 @@ import (
 	"time"
 )
 
+func main() {
+	commands := make(map[string]map[string]map[string]string)
+	commands["add"] = make(map[string]map[string]string)
+	commands["remove"] = make(map[string]map[string]string)
+
+	commands["add"]["title"] = make(map[string]string)
+	commands["add"]["title"]["description"] = "The name of the event"
+	commands["add"]["title"]["required"] = "y"
+
+	commands["add"]["description"] = make(map[string]string)
+	commands["add"]["description"]["description"] = "The longer text of the notification, describing the event"
+
+	commands["add"]["link"] = make(map[string]string)
+	commands["add"]["link"]["description"] = "A link that the notification will point to"
+
+	commands["add"]["valid-since"] = make(map[string]string)
+	commands["add"]["valid-since"]["description"] = "The date and time where the event starts, notifications won't be shown before this date"
+	commands["add"]["valid-since"]["required"] = "y"
+
+	commands["add"]["valid-until"] = make(map[string]string)
+	commands["add"]["valid-until"]["description"] = "The date and time where the event starts, notifications won't be shown after this date"
+	commands["add"]["valid-until"]["required"] = "y"
+
+	commands["add"]["only"] = make(map[string]string)
+	commands["add"]["only"]["description"] = "Specify the names of the projects this applies to (separated by comma)"
+
+	commands["remove"]["id"] = make(map[string]string)
+	commands["remove"]["id"]["description"] = "The ID if the event you want to remove"
+	commands["remove"]["id"]["required"] = "y"
+
+	values := make(map[string]map[string]*string)
+	flagSets := make(map[string]*flag.FlagSet)
+
+	for topCommand := range commands {
+		flagSets[topCommand] = flag.NewFlagSet(topCommand, flag.ExitOnError)
+		values[topCommand] = make(map[string]*string)
+		for flagName := range commands[topCommand] {
+			config := commands[topCommand][flagName]
+			values[topCommand][flagName] = flagSets[topCommand].String(flagName, "", config["description"])
+		}
+	}
+
+	if len(os.Args) < 2 {
+		printHelp("", &commands)
+		os.Exit(1)
+	}
+
+	topCommands := make([]string, 0, len(commands))
+	for key := range commands {
+		topCommands = append(topCommands, key)
+	}
+
+	if !slices.Contains(topCommands, os.Args[1]) {
+		printHelp(os.Args[1], &commands)
+		os.Exit(1)
+	}
+
+	command := os.Args[1]
+	flagSets[command].Parse(os.Args[2:])
+	config := commands[command]
+
+	for flagName := range values[command] {
+		config[flagName]["value"] = *values[command][flagName]
+	}
+
+	if !validate(&config) {
+		printHelp(command, &commands)
+		os.Exit(1)
+	}
+
+	switch command {
+	case "add":
+		os.Exit(handleAdd(config))
+	case "remove":
+		os.Exit(handleRemove(config))
+	}
+}
+
 func printHelp(command string, config *map[string]map[string]map[string]string) {
 	topCommands := make([]string, 0, len(*config))
 	for key := range *config {
@@ -149,13 +227,49 @@ func handleAdd(config map[string]map[string]string) int {
 	return 0
 }
 
-func addJson(data map[string]interface{}) bool {
-	filename := "source.json"
+func handleRemove(config map[string]map[string]string) int {
+	jsonMap := getJson()
+	if jsonMap == nil {
+		return 1
+	}
 
-	jsonFile, err := os.Open(filename)
+	id := config["id"]["value"]
+
+	found := false
+	for index, item := range jsonMap {
+		if item["id"] == id {
+			found = true
+			jsonMap = append(jsonMap[:index], jsonMap[index+1:]...)
+			break
+		}
+	}
+
+	writeJson(jsonMap)
+
+	if found {
+		return 0
+	}
+	fmt.Println("Event with id", id, "was not found")
+	return 1
+}
+
+func addJson(data map[string]interface{}) bool {
+	result := getJson()
+	if result == nil {
+		return false
+	}
+
+	result = append(result, data)
+	writeJson(result)
+
+	return true
+}
+
+func getJson() []map[string]interface{} {
+	jsonFile, err := os.Open(getJsonFileName())
 	if err != nil {
 		fmt.Println(err)
-		return false
+		return nil
 	}
 
 	defer jsonFile.Close()
@@ -163,96 +277,29 @@ func addJson(data map[string]interface{}) bool {
 	bytes, err := io.ReadAll(jsonFile)
 	if err != nil {
 		fmt.Println(err)
-		return false
+		return nil
 	}
 
-	result := make([]interface{}, 0)
+	result := make([]map[string]interface{}, 0)
 	err = json.Unmarshal(bytes, &result)
 	if err != nil {
 		fmt.Println(err)
-		return false
+		return nil
 	}
 
-	result = append(result, data)
-
-	jsonRaw, err := json.MarshalIndent(result, "", "  ")
-	if err != nil {
-		fmt.Println(err)
-		return false
-	}
-
-	os.WriteFile(filename, jsonRaw, os.ModePerm)
-
-	return true
+	return result
 }
 
-func main() {
-	commands := make(map[string]map[string]map[string]string)
-	commands["add"] = make(map[string]map[string]string)
-
-	commands["add"]["title"] = make(map[string]string)
-	commands["add"]["title"]["description"] = "The name of the event"
-	commands["add"]["title"]["required"] = "y"
-
-	commands["add"]["description"] = make(map[string]string)
-	commands["add"]["description"]["description"] = "The longer text of the notification, describing the event"
-
-	commands["add"]["link"] = make(map[string]string)
-	commands["add"]["link"]["description"] = "A link that the notification will point to"
-
-	commands["add"]["valid-since"] = make(map[string]string)
-	commands["add"]["valid-since"]["description"] = "The date and time where the event starts, notifications won't be shown before this date"
-	commands["add"]["valid-since"]["required"] = "y"
-
-	commands["add"]["valid-until"] = make(map[string]string)
-	commands["add"]["valid-until"]["description"] = "The date and time where the event starts, notifications won't be shown after this date"
-	commands["add"]["valid-until"]["required"] = "y"
-
-	commands["add"]["only"] = make(map[string]string)
-	commands["add"]["only"]["description"] = "Specify the names of the projects this applies to (separated by comma)"
-
-	values := make(map[string]map[string]*string)
-	flagSets := make(map[string]*flag.FlagSet)
-
-	for topCommand := range commands {
-		flagSets[topCommand] = flag.NewFlagSet(topCommand, flag.ExitOnError)
-		values[topCommand] = make(map[string]*string)
-		for flagName := range commands[topCommand] {
-			config := commands[topCommand][flagName]
-			values[topCommand][flagName] = flagSets[topCommand].String(flagName, "", config["description"])
-		}
+func writeJson(jsonMap []map[string]interface{}) {
+	jsonRaw, err := json.MarshalIndent(jsonMap, "", "  ")
+	if err != nil {
+		fmt.Println(err)
+		return
 	}
 
-	if len(os.Args) < 2 {
-		printHelp("", &commands)
-		os.Exit(1)
-	}
+	os.WriteFile(getJsonFileName(), jsonRaw, os.ModePerm)
+}
 
-	topCommands := make([]string, 0, len(commands))
-	for key := range commands {
-		topCommands = append(topCommands, key)
-	}
-
-	if !slices.Contains(topCommands, os.Args[1]) {
-		printHelp(os.Args[1], &commands)
-		os.Exit(1)
-	}
-
-	command := os.Args[1]
-	flagSets[command].Parse(os.Args[2:])
-	config := commands[command]
-
-	for flagName := range values[command] {
-		config[flagName]["value"] = *values[command][flagName]
-	}
-
-	if !validate(&config) {
-		printHelp(command, &commands)
-		os.Exit(1)
-	}
-
-	switch command {
-	case "add":
-		os.Exit(handleAdd(config))
-	}
+func getJsonFileName() string {
+	return "../source.json"
 }
