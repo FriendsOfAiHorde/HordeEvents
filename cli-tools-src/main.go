@@ -301,5 +301,5 @@ func writeJson(jsonMap []map[string]interface{}) {
 }
 
 func getJsonFileName() string {
-	return "../source.json"
+	return "source.json"
 }
