@@ -201,11 +201,11 @@ func main() {
 	commands["add"]["link"]["description"] = "A link that the notification will point to"
 
 	commands["add"]["valid-since"] = make(map[string]string)
-	commands["add"]["valid-since"]["description"] = "The date and time where the event starts, notifications won't be shown beforehand"
+	commands["add"]["valid-since"]["description"] = "The date and time where the event starts, notifications won't be shown before this date"
 	commands["add"]["valid-since"]["required"] = "y"
 
 	commands["add"]["valid-until"] = make(map[string]string)
-	commands["add"]["valid-until"]["description"] = "The date and time where the event starts, notifications won't be shown beforehand"
+	commands["add"]["valid-until"]["description"] = "The date and time where the event starts, notifications won't be shown after this date"
 	commands["add"]["valid-until"]["required"] = "y"
 
 	commands["add"]["only"] = make(map[string]string)
