@@ -27,6 +27,6 @@ jobs:
           message: Removed an event
   trigger:
     name: Trigger publish
-    uses: ./.github/workflows/publish.yaml@main
+    uses: ./.github/workflows/publish.yaml
     needs:
       - create
