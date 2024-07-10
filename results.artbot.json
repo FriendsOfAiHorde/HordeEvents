@@ -6,5 +6,12 @@
         "title": "New Horde party started!",
         "validSince": "2024-07-06T06:37:00+00:00",
         "validUntil": "2024-07-13T06:37:00+00:00"
+    },
+    {
+        "description": "This is an example Artbot-only notification",
+        "id": "1709a509-e2bc-40c6-872d-f0d5e98992c2",
+        "title": "Example Artbot-only message",
+        "validSince": "2024-07-04T15:06:00+00:00",
+        "validUntil": "2025-07-08T15:06:00+00:00"
     }
 ]
