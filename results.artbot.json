@@ -1,25 +1,25 @@
 [
     {
-        "description": "A new party has been started with the topic \"Bluegrass Lyrics\"! Click this notification to go over to the Discord thread.",
         "id": "1b7e8918-e134-45b5-9505-95e6ff789fa7",
-        "link": "https://discord.com/channels/781145214752129095/1259977458355015711/1259977460678922261",
         "title": "New Horde party started!",
         "validSince": "2024-07-08T21:00:00+00:00",
-        "validUntil": "2024-07-15T21:00:00+00:00"
+        "validUntil": "2024-07-15T21:00:00+00:00",
+        "description": "A new party has been started with the topic \"Bluegrass Lyrics\"! Click this notification to go over to the Discord thread.",
+        "link": "https://discord.com/channels/781145214752129095/1259977458355015711/1259977460678922261"
     },
     {
-        "description": "A new party has been started with the topic \"The Return of Movie Posters\"! Click this notification to go over to the Discord thread.",
         "id": "e5661b45-7ff3-4d5f-a338-a306e1963a59",
-        "link": "https://discord.com/channels/781145214752129095/1259035506717495297/1259035508663779338",
         "title": "New Horde party started!",
         "validSince": "2024-07-06T06:37:00+00:00",
-        "validUntil": "2024-07-13T06:37:00+00:00"
+        "validUntil": "2024-07-13T06:37:00+00:00",
+        "description": "A new party has been started with the topic \"The Return of Movie Posters\"! Click this notification to go over to the Discord thread.",
+        "link": "https://discord.com/channels/781145214752129095/1259035506717495297/1259035508663779338"
     },
     {
-        "description": "This is an example Artbot-only notification",
         "id": "1709a509-e2bc-40c6-872d-f0d5e98992c2",
         "title": "Example Artbot-only message",
         "validSince": "2024-07-04T15:06:00+00:00",
-        "validUntil": "2025-07-08T15:06:00+00:00"
+        "validUntil": "2025-07-08T15:06:00+00:00",
+        "description": "This is an example Artbot-only notification"
     }
 ]
