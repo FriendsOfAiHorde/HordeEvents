@@ -1,0 +1,46 @@
+name: Add an item
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        type: string
+        description: The name of the event.
+        required: true
+      validSince:
+        type: string
+        description: The date and time this notification is valid since. Should be any unambiguous valid datetime string, preferably in ISO format.
+        required: true
+      validUntil:
+        type: string
+        description: The date and time this notification is valid until. Should be any unambiguous valid datetime string, preferably in ISO format.
+        required: true
+      description:
+        type: string
+        description: The text content of the event (optional).
+      link:
+        type: string
+        description: Any valid link the event points to (optional).
+      limitedTo:
+        type: string
+        description: Comma separated list of frontends this event is related to (optional).
+      channels:
+        type: string
+        description: Comma separated list of channels this event is related to (optional).
+
+concurrency:
+  cancel-in-progress: false
+  group: add-event
+
+jobs:
+  create:
+    name: Creating event
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Create event using cli-tools
+        run: ./cli-tools add --title "${{ github.event.inputs.title }}" --valid-since "${{ github.event.inputs.validSince }}" --valid-until "${{ github.event.inputs.validUntil }}" --description "${{ github.event.inputs.description }}" --link "${{ github.event.inputs.link }}" --only "${{ github.event.inputs.only }}" --channels "${{ github.event.inputs.channels }}"
+      - name: Git Commit/Push Changes
+        uses: actions-x/commit@v6
+        with:
+          message: Added new event
