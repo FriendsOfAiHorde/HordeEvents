@@ -25,3 +25,4 @@ jobs:
         uses: actions-x/commit@v6
         with:
           message: Removed an event
+          token: ${{ secrets.PAT }}
