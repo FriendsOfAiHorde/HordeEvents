@@ -34,12 +34,5 @@
     "channels": [
       "parties"
     ]
-  },
-  {
-    "id": "a64d4605-02e9-43ea-b48e-95fd57331bda",
-    "title": "Test event",
-    "validSince": "2024-07-01T15:00:00Z",
-    "validUntil": "2024-07-08T21:00:00Z",
-    "link": "https://example.com"
   }
 ]
