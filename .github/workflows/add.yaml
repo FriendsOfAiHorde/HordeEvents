@@ -1,4 +1,4 @@
-name: Add an item
+name: Add an event
 on:
   workflow_dispatch:
     inputs:
@@ -33,7 +33,7 @@ concurrency:
 
 jobs:
   create:
-    name: Creating event
+    name: Create event
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
