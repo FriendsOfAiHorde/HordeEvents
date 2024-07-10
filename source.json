@@ -34,5 +34,20 @@
     "channels": [
       "parties"
     ]
+  },
+  {
+    "id": "70e0b2dc-9d65-4c37-979b-4d246811f87e",
+    "title": "Test event",
+    "validSince": "2024-07-01T15:00:00Z",
+    "validUntil": "2024-07-10T21:00:00Z",
+    "description": "Hello there",
+    "limitedTo": [
+      "horde-ng"
+    ],
+    "link": "https://example.com",
+    "channels": [
+      "parties",
+      "horde-news"
+    ]
   }
 ]
