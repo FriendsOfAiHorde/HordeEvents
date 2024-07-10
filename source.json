@@ -5,7 +5,7 @@
     "limitedTo": [
       "horde-ng"
     ],
-    "link": "/settings",
+    "link": "/settings#notifications",
     "title": "HordeNG got notifications",
     "validSince": "2024-07-06T15:00:00Z",
     "validUntil": "2024-07-14T15:00:00Z"
