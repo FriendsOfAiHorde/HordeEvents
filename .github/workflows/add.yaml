@@ -34,7 +34,6 @@ concurrency:
 jobs:
   create:
     name: Create event
-    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
