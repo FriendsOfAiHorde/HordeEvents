@@ -1,0 +1,24 @@
+name: Cleanup events
+on:
+  schedule:
+    - cron: '8 0 * * *'
+  workflow_dispatch:
+
+concurrency:
+  cancel-in-progress: false
+  group: source-writing
+
+jobs:
+  create:
+    name: Cleanup event
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Cleanup events using cli-tools
+        run: ./cli-tools cleanup
+      - name: Git Commit/Push Changes
+        uses: actions-x/commit@v6
+        with:
+          message: Event cleanup
