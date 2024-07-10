@@ -47,6 +47,6 @@ jobs:
           message: Added new event
   trigger:
     name: Trigger publish
-    uses: .github/workflows/publish.yaml@main
+    uses: ./.github/workflows/publish.yaml@main
     needs:
       - create
