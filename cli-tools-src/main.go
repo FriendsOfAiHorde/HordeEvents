@@ -13,6 +13,16 @@ import (
 	"time"
 )
 
+type HordeEvent struct {
+	Id          uuid.UUID `json:"id"`
+	Title       string    `json:"title"`
+	ValidSince  time.Time `json:"validSince"`
+	ValidUntil  time.Time `json:"validUntil"`
+	Description *string   `json:"description,omitempty"`
+	LimitedTo   []string  `json:"limitedTo,omitempty"`
+	Link        *string   `json:"link,omitempty"`
+}
+
 func main() {
 	commands := make(map[string]map[string]map[string]string)
 	commands["add"] = make(map[string]map[string]string)
@@ -204,21 +214,26 @@ func handleAdd(config map[string]map[string]string) int {
 		return 1
 	}
 
-	jsonMap := make(map[string]interface{})
-	jsonMap["title"] = name
-	jsonMap["validSince"] = validSince.In(utc).Format(time.RFC3339)
-	jsonMap["validUntil"] = validUntil.In(utc).Format(time.RFC3339)
-	if description != "" {
-		jsonMap["description"] = description
+	event := HordeEvent{
+		Id:          uuid.New(),
+		Title:       name,
+		ValidSince:  validSince.In(utc),
+		ValidUntil:  validUntil.In(utc),
+		Description: nil,
+		LimitedTo:   nil,
+		Link:        nil,
 	}
-	if link != "" {
-		jsonMap["link"] = link
+	if description != "" {
+		event.Description = &description
 	}
 	if only != "" {
-		jsonMap["limitedTo"] = strings.Split(only, ",")
+		event.LimitedTo = strings.Split(only, ",")
 	}
-	jsonMap["id"] = uuid.New().String()
-	if addJson(jsonMap) {
+	if link != "" {
+		event.Link = &link
+	}
+
+	if addJson(event) {
 		fmt.Println("The event has been successfully added")
 		return 0
 	}
@@ -237,7 +252,7 @@ func handleRemove(config map[string]map[string]string) int {
 
 	found := false
 	for index, item := range jsonMap {
-		if item["id"] == id {
+		if item.Id.String() == id {
 			found = true
 			jsonMap = append(jsonMap[:index], jsonMap[index+1:]...)
 			break
@@ -254,7 +269,7 @@ func handleRemove(config map[string]map[string]string) int {
 	return 1
 }
 
-func addJson(data map[string]interface{}) bool {
+func addJson(data HordeEvent) bool {
 	result := getJson()
 	if result == nil {
 		return false
@@ -266,7 +281,7 @@ func addJson(data map[string]interface{}) bool {
 	return true
 }
 
-func getJson() []map[string]interface{} {
+func getJson() []HordeEvent {
 	jsonFile, err := os.Open(getJsonFileName())
 	if err != nil {
 		fmt.Println(err)
@@ -281,7 +296,7 @@ func getJson() []map[string]interface{} {
 		return nil
 	}
 
-	result := make([]map[string]interface{}, 0)
+	result := make([]HordeEvent, 0)
 	err = json.Unmarshal(bytes, &result)
 	if err != nil {
 		fmt.Println(err)
@@ -291,7 +306,7 @@ func getJson() []map[string]interface{} {
 	return result
 }
 
-func writeJson(jsonMap []map[string]interface{}) {
+func writeJson(jsonMap []HordeEvent) {
 	jsonRaw, err := json.MarshalIndent(jsonMap, "", "  ")
 	if err != nil {
 		fmt.Println(err)
