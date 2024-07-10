@@ -19,16 +19,6 @@
     "link": "https://discord.com/channels/781145214752129095/1259035506717495297/1259035508663779338"
   },
   {
-    "id": "1709a509-e2bc-40c6-872d-f0d5e98992c2",
-    "title": "Example Artbot-only message",
-    "validSince": "2024-07-04T17:06:00+02:00",
-    "validUntil": "2025-07-08T17:06:00+02:00",
-    "description": "This is an example Artbot-only notification",
-    "limitedTo": [
-      "artbot"
-    ]
-  },
-  {
     "id": "1b7e8918-e134-45b5-9505-95e6ff789fa7",
     "title": "New Horde party started!",
     "validSince": "2024-07-08T23:00:00+02:00",
