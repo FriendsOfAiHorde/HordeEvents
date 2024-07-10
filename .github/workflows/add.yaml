@@ -47,6 +47,7 @@ jobs:
           message: Added new event
   trigger:
     name: Trigger publish
+    permissions: write-all
     uses: ./.github/workflows/publish.yaml
     needs:
       - create
