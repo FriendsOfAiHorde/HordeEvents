@@ -27,6 +27,7 @@ func main() {
 	commands := make(map[string]map[string]map[string]string)
 	commands["add"] = make(map[string]map[string]string)
 	commands["remove"] = make(map[string]map[string]string)
+	commands["cleanup"] = make(map[string]map[string]string)
 
 	commands["add"]["title"] = make(map[string]string)
 	commands["add"]["title"]["description"] = "The name of the event"
@@ -98,6 +99,11 @@ func main() {
 		os.Exit(handleAdd(config))
 	case "remove":
 		os.Exit(handleRemove(config))
+	case "cleanup":
+		os.Exit(handleCleanup())
+	default:
+		fmt.Println("Unhandled command:", command)
+		os.Exit(1)
 	}
 }
 
@@ -243,23 +249,23 @@ func handleAdd(config map[string]map[string]string) int {
 }
 
 func handleRemove(config map[string]map[string]string) int {
-	jsonMap := getJson()
-	if jsonMap == nil {
+	jsonArray := getJson()
+	if jsonArray == nil {
 		return 1
 	}
 
 	id := config["id"]["value"]
 
 	found := false
-	for index, item := range jsonMap {
+	for index, item := range jsonArray {
 		if item.Id.String() == id {
 			found = true
-			jsonMap = append(jsonMap[:index], jsonMap[index+1:]...)
+			jsonArray = append(jsonArray[:index], jsonArray[index+1:]...)
 			break
 		}
 	}
 
-	writeJson(jsonMap)
+	writeJson(jsonArray)
 
 	if found {
 		fmt.Println("The event has been successfully removed")
@@ -267,6 +273,34 @@ func handleRemove(config map[string]map[string]string) int {
 	}
 	fmt.Println("Event with id", id, "was not found")
 	return 1
+}
+
+func handleCleanup() int {
+	jsonArray := getJson()
+
+	now := time.Now()
+
+	removed := 0
+	for currentPassRemoved := true; currentPassRemoved; {
+		currentPassRemoved = false
+		for index, item := range jsonArray {
+			if now.After(item.ValidUntil) {
+				jsonArray = append(jsonArray[:index], jsonArray[index+1:]...)
+				removed += 1
+				currentPassRemoved = true
+				break
+			}
+		}
+	}
+
+	if removed > 0 {
+		fmt.Println("Successfully removed", removed, "expired events")
+		writeJson(jsonArray)
+	} else {
+		fmt.Println("No expired events found")
+	}
+
+	return 0
 }
 
 func addJson(data HordeEvent) bool {
@@ -306,8 +340,8 @@ func getJson() []HordeEvent {
 	return result
 }
 
-func writeJson(jsonMap []HordeEvent) {
-	jsonRaw, err := json.MarshalIndent(jsonMap, "", "  ")
+func writeJson(jsonArray []HordeEvent) {
+	jsonRaw, err := json.MarshalIndent(jsonArray, "", "  ")
 	if err != nil {
 		fmt.Println(err)
 		return
