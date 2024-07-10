@@ -24,6 +24,6 @@ jobs:
           message: Event cleanup
   trigger:
     name: Trigger publish
-    uses: .github/workflows/publish.yaml
+    uses: .github/workflows/publish.yaml@main
     needs:
       - create
