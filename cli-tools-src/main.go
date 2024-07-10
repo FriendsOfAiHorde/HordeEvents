@@ -29,6 +29,7 @@ func main() {
 	commands["add"] = make(map[string]map[string]string)
 	commands["remove"] = make(map[string]map[string]string)
 	commands["cleanup"] = make(map[string]map[string]string)
+	commands["format"] = make(map[string]map[string]string)
 
 	commands["add"]["title"] = make(map[string]string)
 	commands["add"]["title"]["description"] = "The name of the event"
@@ -105,10 +106,17 @@ func main() {
 		os.Exit(handleRemove(config))
 	case "cleanup":
 		os.Exit(handleCleanup())
+	case "format":
+		os.Exit(handleFormat())
 	default:
 		fmt.Println("Unhandled command:", command)
 		os.Exit(1)
 	}
+}
+
+func handleFormat() int {
+	writeJson(getJson())
+	return 0
 }
 
 func printHelp(command string, config *map[string]map[string]map[string]string) {
