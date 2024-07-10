@@ -32,6 +32,14 @@
           "type": "string"
         }
       },
+      "channels": {
+        "type": "array",
+        "description": "Any channel this message is related to",
+        "items": {
+          "type": "string",
+          "enum": ["frontend-news", "marketing", "horde-news", "parties"]
+        }
+      },
       "link": {
         "type": "string"
       }
