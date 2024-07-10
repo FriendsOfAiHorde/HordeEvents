@@ -11,6 +11,7 @@ concurrency:
 jobs:
   create:
     name: Cleanup event
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -21,4 +22,8 @@ jobs:
         uses: actions-x/commit@v6
         with:
           message: Event cleanup
-          token: ${{ secrets.PAT }}
+  trigger:
+    name: Trigger publish
+    uses: .github/workflows/publish.yaml
+    needs:
+      - create
