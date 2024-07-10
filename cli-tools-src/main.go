@@ -116,6 +116,7 @@ func main() {
 
 func handleFormat() int {
 	writeJson(getJson())
+	fmt.Println("The source.json file has been successfully formatted")
 	return 0
 }
 
