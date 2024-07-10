@@ -1,4 +1,4 @@
-name: [Manage] Cleanup events
+name: '[Manage] Cleanup events'
 on:
   schedule:
     - cron: '8 0 * * *'

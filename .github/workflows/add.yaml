@@ -1,4 +1,4 @@
-name: [Manage] Add an event
+name: '[Manage] Add an event'
 on:
   workflow_dispatch:
     inputs:
