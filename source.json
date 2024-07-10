@@ -34,19 +34,5 @@
     "channels": [
       "parties"
     ]
-  },
-  {
-    "id": "e99d600c-b730-47e1-a156-0771f340ee0b",
-    "title": "Test event",
-    "validSince": "2024-07-01T15:00:00Z",
-    "validUntil": "2024-07-11T21:00:00Z",
-    "description": "Hello there",
-    "limitedTo": [
-      "nonexistent"
-    ],
-    "link": "https://example.com",
-    "channels": [
-      "parties"
-    ]
   }
 ]
