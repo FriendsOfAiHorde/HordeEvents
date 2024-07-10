@@ -1,0 +1,27 @@
+name: Remove an event
+on:
+  workflow_dispatch:
+    inputs:
+      id:
+        type: string
+        description: The ID of the event.
+        required: true
+
+concurrency:
+  cancel-in-progress: false
+  group: source-writing
+
+jobs:
+  create:
+    name: Remove event
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Remove event using cli-tools
+        run: ./cli-tools remove --id "${{ github.event.inputs.id }}"
+      - name: Git Commit/Push Changes
+        uses: actions-x/commit@v6
+        with:
+          message: Removed an event

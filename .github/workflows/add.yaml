@@ -29,7 +29,7 @@ on:
 
 concurrency:
   cancel-in-progress: false
-  group: add-event
+  group: source-writing
 
 jobs:
   create:
