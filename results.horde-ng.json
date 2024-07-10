@@ -8,7 +8,7 @@
         "validUntil": "2024-07-15T21:00:00+00:00"
     },
     {
-        "description": "HordeNG has implemented notifications and this is just to let you know that you can go over to settings and disable them.",
+        "description": "HordeNG now supports notifications and this is just to let you know that you can go over to settings and disable them.",
         "id": "6692ec8b-1723-4539-a1bc-126d0bad606e",
         "link": "/settings",
         "title": "HordeNG got notifications",
