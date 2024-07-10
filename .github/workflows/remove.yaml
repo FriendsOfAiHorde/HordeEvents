@@ -1,4 +1,4 @@
-name: Remove an event
+name: [Manage] Remove an event
 on:
   workflow_dispatch:
     inputs:
