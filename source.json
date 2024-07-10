@@ -9,7 +9,9 @@
       "horde-ng"
     ],
     "link": "/settings#notifications",
-    "channels": ["frontend-news"]
+    "channels": [
+      "frontend-news"
+    ]
   },
   {
     "id": "e5661b45-7ff3-4d5f-a338-a306e1963a59",
@@ -18,7 +20,9 @@
     "validUntil": "2024-07-13T08:37:00+02:00",
     "description": "A new party has been started with the topic \"The Return of Movie Posters\"! Click this notification to go over to the Discord thread.",
     "link": "https://discord.com/channels/781145214752129095/1259035506717495297/1259035508663779338",
-    "channels": ["parties"]
+    "channels": [
+      "parties"
+    ]
   },
   {
     "id": "1b7e8918-e134-45b5-9505-95e6ff789fa7",
@@ -27,6 +31,8 @@
     "validUntil": "2024-07-15T23:00:00+02:00",
     "description": "A new party has been started with the topic \"Bluegrass Lyrics\"! Click this notification to go over to the Discord thread.",
     "link": "https://discord.com/channels/781145214752129095/1259977458355015711/1259977460678922261",
-    "channels": ["parties"]
+    "channels": [
+      "parties"
+    ]
   }
 ]
