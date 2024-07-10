@@ -21,6 +21,7 @@ type HordeEvent struct {
 	Description *string   `json:"description,omitempty"`
 	LimitedTo   []string  `json:"limitedTo,omitempty"`
 	Link        *string   `json:"link,omitempty"`
+	Channels    []string  `json:"channels,omitempty"`
 }
 
 func main() {
@@ -49,6 +50,9 @@ func main() {
 
 	commands["add"]["only"] = make(map[string]string)
 	commands["add"]["only"]["description"] = "Specify the names of the projects this applies to (separated by comma)"
+
+	commands["add"]["channels"] = make(map[string]string)
+	commands["add"]["channels"]["description"] = "Specify the channel names, check schema.json file for valid values (separated by comma)"
 
 	commands["remove"]["id"] = make(map[string]string)
 	commands["remove"]["id"]["description"] = "The ID if the event you want to remove"
@@ -201,6 +205,7 @@ func handleAdd(config map[string]map[string]string) int {
 	description := config["description"]["value"]
 	link := config["link"]["value"]
 	only := config["only"]["value"]
+	channels := config["channels"]["value"]
 	validSince, err := dateparse.ParseAny(config["valid-since"]["value"])
 	if err != nil {
 		fmt.Println("Failed parsing valid-since date:")
@@ -228,6 +233,7 @@ func handleAdd(config map[string]map[string]string) int {
 		Description: nil,
 		LimitedTo:   nil,
 		Link:        nil,
+		Channels:    nil,
 	}
 	if description != "" {
 		event.Description = &description
@@ -237,6 +243,9 @@ func handleAdd(config map[string]map[string]string) int {
 	}
 	if link != "" {
 		event.Link = &link
+	}
+	if channels != "" {
+		event.Channels = strings.Split(channels, ",")
 	}
 
 	if addJson(event) {
