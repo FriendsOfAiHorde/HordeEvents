@@ -23,6 +23,10 @@ func NewResultGenerator(
 }
 
 func (generator ResultGenerator) Generate() error {
+	if generator.staticClients == nil || generator.events == nil {
+		return fmt.Errorf("please use the NewResultGenerator function to create an instance of generator")
+	}
+
 	utc, err := time.LoadLocation("UTC")
 	if err != nil {
 		fmt.Println("Failed loading UTC location")
