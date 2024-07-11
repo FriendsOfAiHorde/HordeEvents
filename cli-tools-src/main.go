@@ -153,6 +153,7 @@ func handleValidate() int {
 		for _, desc := range result.Errors() {
 			fmt.Println("-", desc)
 		}
+		return 1
 	}
 
 	fmt.Println("The source.json file is valid")
