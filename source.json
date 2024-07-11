@@ -34,5 +34,16 @@
     "channels": [
       "parties"
     ]
+  },
+  {
+    "id": "d2467c00-6497-4625-9e49-c787c0032d3c",
+    "title": "\"First post!\" Horde party started!",
+    "validSince": "2024-07-11T16:43:00+02:00",
+    "validUntil": "2024-07-14T16:43:00+02:00",
+    "description": "A new party has been started by Paladin01101100! It's called \"First post!\" and you'll get 1000 kudos for participating, so click this notification to head over to the Discord server.",
+    "link": "https://discord.com/channels/781145214752129095/1260969671658569869/1260969674179350621",
+    "channels": [
+      "parties"
+    ]
   }
 ]
