@@ -3,6 +3,7 @@ package generator
 import (
 	"fmt"
 	"main/horde"
+	"main/json_helper"
 	"slices"
 	"time"
 )
@@ -97,8 +98,8 @@ func (generator ResultGenerator) Generate() error {
 		filename := fmt.Sprintf("results.%s.json", limitedTo)
 		filenameMin := fmt.Sprintf("results.%s.min.json", limitedTo)
 
-		err1 := WriteJson(filename, result)
-		err2 := WriteJsonMinified(filenameMin, result)
+		err1 := json_helper.WriteJson(filename, result)
+		err2 := json_helper.WriteJsonMinified(filenameMin, result)
 
 		if err1 != nil {
 			return err1

@@ -1,15 +1,15 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
 	"fmt"
 	"github.com/araddon/dateparse"
 	"github.com/google/uuid"
 	"github.com/xeipuuv/gojsonschema"
-	"io"
+	"main/Parser"
 	"main/generator"
 	"main/horde"
+	"main/json_helper"
 	"os"
 	"slices"
 	"strings"
@@ -46,8 +46,13 @@ func main() {
 	commands["add"]["only"] = make(map[string]string)
 	commands["add"]["only"]["description"] = "Specify the names of the projects this applies to (separated by comma)"
 
+	channelNames, err := Parser.NewSchemaParser(getSchemaFileName()).GetAllowedChannels()
 	commands["add"]["channels"] = make(map[string]string)
-	commands["add"]["channels"]["description"] = "Specify the channel names, check schema.json file for valid values (separated by comma)"
+	if err != nil {
+		commands["add"]["channels"]["description"] = "Specify the channel names, check schema.json file for valid values (separated by comma)"
+	} else {
+		commands["add"]["channels"]["description"] = "Specify the channel names, valid values: " + strings.Join(channelNames, ", ")
+	}
 
 	commands["remove"]["id"] = make(map[string]string)
 	commands["remove"]["id"]["description"] = "The ID if the event you want to remove"
@@ -114,7 +119,7 @@ func main() {
 
 func handleGenerate() int {
 	clients := make([]string, 0)
-	err := mapJson(getClientsFileName(), &clients)
+	err := json_helper.MapJson(getClientsFileName(), &clients)
 	if err != nil {
 		fmt.Println(err)
 		return 1
@@ -375,7 +380,7 @@ func addJson(data horde.Event) bool {
 
 func getJson() []horde.Event {
 	result := make([]horde.Event, 0)
-	err := mapJson(getJsonFileName(), &result)
+	err := json_helper.MapJson(getJsonFileName(), &result)
 	if err != nil {
 		fmt.Println(err)
 		return nil
@@ -384,29 +389,8 @@ func getJson() []horde.Event {
 	return result
 }
 
-func mapJson[TOutput any](filename string, output *TOutput) error {
-	jsonFile, err := os.Open(filename)
-	if err != nil {
-		return err
-	}
-
-	defer jsonFile.Close()
-
-	bytes, err := io.ReadAll(jsonFile)
-	if err != nil {
-		return err
-	}
-
-	err = json.Unmarshal(bytes, output)
-	if err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func writeJson(jsonArray []horde.Event) {
-	err := generator.WriteJson(getJsonFileName(), jsonArray)
+	err := json_helper.WriteJson(getJsonFileName(), jsonArray)
 	if err != nil {
 		fmt.Println(err)
 		return

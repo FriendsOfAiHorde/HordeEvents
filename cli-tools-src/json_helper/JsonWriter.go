@@ -1,4 +1,4 @@
-package generator
+package json_helper
 
 import (
 	"encoding/json"
