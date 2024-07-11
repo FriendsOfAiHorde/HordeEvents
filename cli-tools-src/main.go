@@ -127,6 +127,7 @@ func handleGenerate() int {
 		return 1
 	}
 
+	fmt.Println("The resulting files have been generated")
 	return 0
 }
 
@@ -149,6 +150,7 @@ func handleValidate() int {
 		}
 	}
 
+	fmt.Println("The source.json file is valid")
 	return 0
 }
 
