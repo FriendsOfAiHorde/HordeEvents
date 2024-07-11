@@ -301,6 +301,19 @@ func handleAdd(config map[string]map[string]string) int {
 	}
 	if channels != "" {
 		event.Channels = strings.Split(channels, ",")
+
+		availableChannels, err := Parser.NewSchemaParser(getSchemaFileName()).GetAllowedChannels()
+		if err != nil {
+			fmt.Println("Failed getting list of allowed channels:")
+			fmt.Println(err)
+			return 1
+		}
+		for _, channel := range event.Channels {
+			if !slices.Contains(availableChannels, channel) {
+				fmt.Println("The value '"+channel+"' is not a valid channel, valid values include:", strings.Join(availableChannels, ", "))
+				return 1
+			}
+		}
 	}
 
 	if addJson(event) {
