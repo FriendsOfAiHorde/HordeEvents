@@ -412,13 +412,13 @@ func writeJson(jsonArray []horde.Event) {
 }
 
 func getJsonFileName() string {
-	return "source.json"
+	return "./source.json"
 }
 
 func getSchemaFileName() string {
-	return "schema.json"
+	return "./schema.json"
 }
 
 func getClientsFileName() string {
-	return "clients.json"
+	return "./clients.json"
 }
