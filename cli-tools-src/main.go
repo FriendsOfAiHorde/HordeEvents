@@ -43,8 +43,14 @@ func main() {
 	commands["add"]["valid-until"]["description"] = "The date and time where the event starts, notifications won't be shown after this date"
 	commands["add"]["valid-until"]["required"] = "y"
 
+	var clients []string
+	err := json_helper.MapJson(getClientsFileName(), &clients)
 	commands["add"]["only"] = make(map[string]string)
-	commands["add"]["only"]["description"] = "Specify the names of the projects this applies to (separated by comma)"
+	if err != nil {
+		commands["add"]["only"]["description"] = "Specify the names of the projects this applies to (separated by comma)"
+	} else {
+		commands["add"]["only"]["description"] = "Specify the names of the projects this applies to (separated by comma), you can use one of '" + strings.Join(clients, "', '") + "', but any other string is valid as well"
+	}
 
 	channelNames, err := Parser.NewSchemaParser(getSchemaFileName()).GetAllowedChannels()
 	commands["add"]["channels"] = make(map[string]string)
