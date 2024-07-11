@@ -6,10 +6,10 @@ import (
 	"github.com/araddon/dateparse"
 	"github.com/google/uuid"
 	"github.com/xeipuuv/gojsonschema"
-	"main/Parser"
 	"main/generator"
+	"main/helper"
 	"main/horde"
-	"main/json_helper"
+	"main/parser"
 	"os"
 	"slices"
 	"strings"
@@ -44,7 +44,7 @@ func main() {
 	commands["add"]["valid-until"]["required"] = "y"
 
 	var clients []string
-	err := json_helper.MapJson(getClientsFileName(), &clients)
+	err := helper.MapJson(getClientsFileName(), &clients)
 	commands["add"]["only"] = make(map[string]string)
 	if err != nil {
 		commands["add"]["only"]["description"] = "Specify the names of the projects this applies to (separated by comma)"
@@ -52,7 +52,7 @@ func main() {
 		commands["add"]["only"]["description"] = "Specify the names of the projects this applies to (separated by comma), you can use one of '" + strings.Join(clients, "', '") + "', but any other string is valid as well"
 	}
 
-	channelNames, err := Parser.NewSchemaParser(getSchemaFileName()).GetAllowedChannels()
+	channelNames, err := parser.NewSchemaParser(getSchemaFileName()).GetAllowedChannels()
 	commands["add"]["channels"] = make(map[string]string)
 	if err != nil {
 		commands["add"]["channels"]["description"] = "Specify the channel names, check schema.json file for valid values (separated by comma)"
@@ -125,7 +125,7 @@ func main() {
 
 func handleGenerate() int {
 	clients := make([]string, 0)
-	err := json_helper.MapJson(getClientsFileName(), &clients)
+	err := helper.MapJson(getClientsFileName(), &clients)
 	if err != nil {
 		fmt.Println(err)
 		return 1
@@ -308,7 +308,7 @@ func handleAdd(config map[string]map[string]string) int {
 	if channels != "" {
 		event.Channels = strings.Split(channels, ",")
 
-		availableChannels, err := Parser.NewSchemaParser(getSchemaFileName()).GetAllowedChannels()
+		availableChannels, err := parser.NewSchemaParser(getSchemaFileName()).GetAllowedChannels()
 		if err != nil {
 			fmt.Println("Failed getting list of allowed channels:")
 			fmt.Println(err)
@@ -400,7 +400,7 @@ func addJson(data horde.Event) bool {
 
 func getJson() []horde.Event {
 	result := make([]horde.Event, 0)
-	err := json_helper.MapJson(getJsonFileName(), &result)
+	err := helper.MapJson(getJsonFileName(), &result)
 	if err != nil {
 		fmt.Println(err)
 		return nil
@@ -410,7 +410,7 @@ func getJson() []horde.Event {
 }
 
 func writeJson(jsonArray []horde.Event) {
-	err := json_helper.WriteJson(getJsonFileName(), jsonArray)
+	err := helper.WriteJson(getJsonFileName(), jsonArray)
 	if err != nil {
 		fmt.Println(err)
 		return

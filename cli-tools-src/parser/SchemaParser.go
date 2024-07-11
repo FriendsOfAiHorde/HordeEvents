@@ -1,7 +1,7 @@
-package Parser
+package parser
 
 import (
-	"main/json_helper"
+	"main/helper"
 	"os"
 )
 
@@ -33,7 +33,7 @@ func (parser SchemaParser) openForReading() (*os.File, error) {
 
 func (parser SchemaParser) GetAllowedChannels() ([]string, error) {
 	var result schema
-	err := json_helper.MapJson(parser.filepath, &result)
+	err := helper.MapJson(parser.filepath, &result)
 	if err != nil {
 		return nil, err
 	}
