@@ -40,6 +40,16 @@
           "enum": ["frontend-news", "marketing", "horde-news", "parties"]
         }
       },
+      "data": {
+        "type": "object",
+        "description": "Arbitrary data where the key is a client name and the value is an object that can contain anything",
+        "patternProperties": {
+          ".+": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      },
       "link": {
         "type": "string"
       }
