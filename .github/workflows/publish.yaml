@@ -27,16 +27,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.ref_name }}
+      - name: Validate source
+        run: ./cli-tools validate
       - name: Format source
         run: ./cli-tools format
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.3'
-      - name: Install dependencies
-        run: composer install
       - name: Generate files
-        run: php process.php
+        run: ./cli-tools generate
       - name: Git Commit/Push Changes
         uses: actions-x/commit@v6
         with:

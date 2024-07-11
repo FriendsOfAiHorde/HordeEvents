@@ -6,23 +6,15 @@ import (
 	"fmt"
 	"github.com/araddon/dateparse"
 	"github.com/google/uuid"
+	"github.com/xeipuuv/gojsonschema"
 	"io"
+	"main/generator"
+	"main/horde"
 	"os"
 	"slices"
 	"strings"
 	"time"
 )
-
-type HordeEvent struct {
-	Id          uuid.UUID `json:"id"`
-	Title       string    `json:"title"`
-	ValidSince  time.Time `json:"validSince"`
-	ValidUntil  time.Time `json:"validUntil"`
-	Description *string   `json:"description,omitempty"`
-	LimitedTo   []string  `json:"limitedTo,omitempty"`
-	Link        *string   `json:"link,omitempty"`
-	Channels    []string  `json:"channels,omitempty"`
-}
 
 func main() {
 	commands := make(map[string]map[string]map[string]string)
@@ -30,6 +22,8 @@ func main() {
 	commands["remove"] = make(map[string]map[string]string)
 	commands["cleanup"] = make(map[string]map[string]string)
 	commands["format"] = make(map[string]map[string]string)
+	commands["validate"] = make(map[string]map[string]string)
+	commands["generate"] = make(map[string]map[string]string)
 
 	commands["add"]["title"] = make(map[string]string)
 	commands["add"]["title"]["description"] = "The name of the event"
@@ -108,10 +102,54 @@ func main() {
 		os.Exit(handleCleanup())
 	case "format":
 		os.Exit(handleFormat())
+	case "validate":
+		os.Exit(handleValidate())
+	case "generate":
+		os.Exit(handleGenerate())
 	default:
 		fmt.Println("Unhandled command:", command)
 		os.Exit(1)
 	}
+}
+
+func handleGenerate() int {
+	clients := make([]string, 0)
+	err := mapJson(getClientsFileName(), &clients)
+	if err != nil {
+		fmt.Println(err)
+		return 1
+	}
+
+	resultGenerator := generator.NewResultGenerator(clients, getJson())
+	err = resultGenerator.Generate()
+	if err != nil {
+		fmt.Println(err)
+		return 1
+	}
+
+	return 0
+}
+
+func handleValidate() int {
+	schemaLoader := gojsonschema.NewReferenceLoader("file://" + getSchemaFileName())
+	documentLoader := gojsonschema.NewReferenceLoader("file://" + getJsonFileName())
+
+	result, err := gojsonschema.Validate(schemaLoader, documentLoader)
+
+	if err != nil {
+		fmt.Println("There was an error while validating the JSON schema:")
+		fmt.Println(err)
+		return 1
+	}
+
+	if !result.Valid() {
+		fmt.Println("The JSON schema is not valid:")
+		for _, desc := range result.Errors() {
+			fmt.Println("-", desc)
+		}
+	}
+
+	return 0
 }
 
 func handleFormat() int {
@@ -234,7 +272,7 @@ func handleAdd(config map[string]map[string]string) int {
 		return 1
 	}
 
-	event := HordeEvent{
+	event := horde.Event{
 		Id:          uuid.New(),
 		Title:       name,
 		ValidSince:  validSince.In(utc),
@@ -321,7 +359,7 @@ func handleCleanup() int {
 	return 0
 }
 
-func addJson(data HordeEvent) bool {
+func addJson(data horde.Event) bool {
 	result := getJson()
 	if result == nil {
 		return false
@@ -333,23 +371,9 @@ func addJson(data HordeEvent) bool {
 	return true
 }
 
-func getJson() []HordeEvent {
-	jsonFile, err := os.Open(getJsonFileName())
-	if err != nil {
-		fmt.Println(err)
-		return nil
-	}
-
-	defer jsonFile.Close()
-
-	bytes, err := io.ReadAll(jsonFile)
-	if err != nil {
-		fmt.Println(err)
-		return nil
-	}
-
-	result := make([]HordeEvent, 0)
-	err = json.Unmarshal(bytes, &result)
+func getJson() []horde.Event {
+	result := make([]horde.Event, 0)
+	err := mapJson(getJsonFileName(), &result)
 	if err != nil {
 		fmt.Println(err)
 		return nil
@@ -358,16 +382,43 @@ func getJson() []HordeEvent {
 	return result
 }
 
-func writeJson(jsonArray []HordeEvent) {
-	jsonRaw, err := json.MarshalIndent(jsonArray, "", "  ")
+func mapJson[TOutput any](filename string, output *TOutput) error {
+	jsonFile, err := os.Open(filename)
+	if err != nil {
+		return err
+	}
+
+	defer jsonFile.Close()
+
+	bytes, err := io.ReadAll(jsonFile)
+	if err != nil {
+		return err
+	}
+
+	err = json.Unmarshal(bytes, output)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func writeJson(jsonArray []horde.Event) {
+	err := generator.WriteJson(getJsonFileName(), jsonArray)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-
-	os.WriteFile(getJsonFileName(), jsonRaw, os.ModePerm)
 }
 
 func getJsonFileName() string {
 	return "source.json"
+}
+
+func getSchemaFileName() string {
+	return "schema.json"
+}
+
+func getClientsFileName() string {
+	return "clients.json"
 }
