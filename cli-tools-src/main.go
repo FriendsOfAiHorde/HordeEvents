@@ -17,31 +17,38 @@ import (
 )
 
 func main() {
-	commands := make(map[string]map[string]map[string]string)
-	commands["add"] = make(map[string]map[string]string)
-	commands["remove"] = make(map[string]map[string]string)
-	commands["cleanup"] = make(map[string]map[string]string)
-	commands["format"] = make(map[string]map[string]string)
-	commands["validate"] = make(map[string]map[string]string)
-	commands["generate"] = make(map[string]map[string]string)
-
-	commands["add"]["title"] = make(map[string]string)
-	commands["add"]["title"]["description"] = "The name of the event"
-	commands["add"]["title"]["required"] = "y"
-
-	commands["add"]["description"] = make(map[string]string)
-	commands["add"]["description"]["description"] = "The longer text of the notification, describing the event"
-
-	commands["add"]["link"] = make(map[string]string)
-	commands["add"]["link"]["description"] = "A link that the notification will point to"
-
-	commands["add"]["valid-since"] = make(map[string]string)
-	commands["add"]["valid-since"]["description"] = "The date and time where the event starts, notifications won't be shown before this date"
-	commands["add"]["valid-since"]["required"] = "y"
-
-	commands["add"]["valid-until"] = make(map[string]string)
-	commands["add"]["valid-until"]["description"] = "The date and time where the event starts, notifications won't be shown after this date"
-	commands["add"]["valid-until"]["required"] = "y"
+	commands := map[string]map[string]map[string]string{
+		"add": {
+			"title": {
+				"description": "The name of the event",
+				"required":    "y",
+			},
+			"description": {
+				"description": "The longer text of the notification, describing the event",
+			},
+			"link": {
+				"description": "A link that the notification will point to",
+			},
+			"valid-since": {
+				"description": "The date and time where the event starts, notifications won't be shown before this date",
+				"required":    "y",
+			},
+			"valid-until": {
+				"description": "The date and time where the event starts, notifications won't be shown before this date",
+				"required":    "y",
+			},
+		},
+		"remove": {
+			"id": {
+				"description": "The ID if the event you want to remove",
+				"required":    "y",
+			},
+		},
+		"cleanup":  {},
+		"format":   {},
+		"validate": {},
+		"generate": {},
+	}
 
 	var clients []string
 	err := helper.MapJson(getClientsFileName(), &clients)
@@ -59,10 +66,6 @@ func main() {
 	} else {
 		commands["add"]["channels"]["description"] = "Specify the channel names, valid values: " + strings.Join(channelNames, ", ")
 	}
-
-	commands["remove"]["id"] = make(map[string]string)
-	commands["remove"]["id"]["description"] = "The ID if the event you want to remove"
-	commands["remove"]["id"]["required"] = "y"
 
 	values := make(map[string]map[string]*string)
 	flagSets := make(map[string]*flag.FlagSet)
