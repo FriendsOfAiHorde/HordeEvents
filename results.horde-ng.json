@@ -1,5 +1,19 @@
 [
   {
+    "id": "fb6dc3b4-ef6e-497a-b588-40487906d595",
+    "title": "AI Horde on Canvas 2024",
+    "validSince": "2024-07-12T04:00:00Z",
+    "validUntil": "2024-07-15T04:00:00Z",
+    "description": "Help draw the AI Horde logo on Canvas 2024! Click this notification for more info.",
+    "limitedTo": [
+      "common"
+    ],
+    "link": "https://lemmy.dbzer0.com/post/23907738",
+    "channels": [
+      "marketing"
+    ]
+  },
+  {
     "id": "d2467c00-6497-4625-9e49-c787c0032d3c",
     "title": "\"First post!\" Horde party started!",
     "validSince": "2024-07-11T14:43:00Z",
