@@ -37,7 +37,7 @@
         "description": "Any channel this message is related to",
         "items": {
           "type": "string",
-          "enum": ["frontend-news", "marketing", "horde-news", "parties"]
+          "enum": ["frontend-news", "marketing", "horde-news", "parties", "other"]
         }
       },
       "data": {

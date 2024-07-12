@@ -45,5 +45,16 @@
     "channels": [
       "parties"
     ]
+  },
+  {
+    "id": "fb6dc3b4-ef6e-497a-b588-40487906d595",
+    "title": "AI Horde on Canvas 2024",
+    "validSince": "2024-07-12T04:00:00Z",
+    "validUntil": "2024-07-15T04:00:00Z",
+    "description": "Help draw the AI Horde logo on Canvas 2024! Click this notification for more info.",
+    "link": "https://lemmy.dbzer0.com/post/23907738",
+    "channels": [
+      "marketing"
+    ]
   }
 ]
