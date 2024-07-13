@@ -23,6 +23,8 @@ Currently generated files:
   contain both the common events and events related only to HordeNG
 - [results.artbot.json](results.artbot.json) and [results.artbot.min.json](results.artbot.min.json) - these
   contain both the common events and events related only to Artbot
+- [results.aislingeach.json](results.aislingeach.json) and [results.aislingeach.min.json](results.aislingeach.min.json) - these
+  contain both the common events and events related only to Aislingeach
 
 ### CLI tools
 
