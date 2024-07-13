@@ -60,6 +60,9 @@ func (generator ResultGenerator) Generate() error {
 			if _, exists := results[limitedTo]; !exists {
 				results[limitedTo] = make([]horde.Event, 0)
 			}
+			if len(item.LimitedTo) == 1 && item.LimitedTo[0] == COMMON {
+				item.LimitedTo = nil
+			}
 			results[limitedTo] = append(results[limitedTo], item)
 		}
 	}
