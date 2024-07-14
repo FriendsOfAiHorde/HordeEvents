@@ -1,5 +1,24 @@
 [
   {
+    "id": "0ff3d2e5-ab2d-4ece-8bc8-643ce163f479",
+    "title": "JPEGs are now supported",
+    "validSince": "2024-07-14T16:18:00Z",
+    "validUntil": "2024-07-21T16:18:00Z",
+    "description": "In addition to WEBP and PNG, you can now choose to store your images as JPEGs, which can significantly save on space at the cost of some quality.",
+    "limitedTo": [
+      "horde-ng"
+    ],
+    "link": "/settings#format",
+    "channels": [
+      "frontend-news"
+    ],
+    "data": {
+      "horde-ng": {
+        "requiredVersion": "8284ec854c258e8ac0d57d1c71f2f148996224dd"
+      }
+    }
+  },
+  {
     "id": "fb6dc3b4-ef6e-497a-b588-40487906d595",
     "title": "AI Horde on Canvas 2024",
     "validSince": "2024-07-12T04:00:00Z",
@@ -8,17 +27,6 @@
     "link": "https://lemmings.world/post/11332366",
     "channels": [
       "marketing"
-    ]
-  },
-  {
-    "id": "d2467c00-6497-4625-9e49-c787c0032d3c",
-    "title": "\"First post!\" Horde party started!",
-    "validSince": "2024-07-11T14:43:00Z",
-    "validUntil": "2024-07-14T14:43:00Z",
-    "description": "A new party has been started by Paladin01101100! It's called \"First post!\" and you'll get 1000 kudos for participating, so click this notification to head over to the Discord server.",
-    "link": "https://discord.com/channels/781145214752129095/1260969671658569869/1260969674179350621",
-    "channels": [
-      "parties"
     ]
   },
   {
