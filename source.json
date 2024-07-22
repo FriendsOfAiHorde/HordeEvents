@@ -1,24 +1,5 @@
 [
   {
-    "id": "0ff3d2e5-ab2d-4ece-8bc8-643ce163f479",
-    "title": "JPEGs are now supported",
-    "validSince": "2024-07-14T18:18:00+02:00",
-    "validUntil": "2024-07-21T18:18:00+02:00",
-    "description": "In addition to WEBP and PNG, you can now choose to store your images as JPEGs, which can significantly save on space at the cost of some quality.",
-    "limitedTo": [
-      "horde-ng"
-    ],
-    "link": "/settings#format",
-    "channels": [
-      "frontend-news"
-    ],
-    "data": {
-      "horde-ng": {
-        "requiredVersion": "05c61554c01aaf1170cbd7f81e66a6ce31ed9902"
-      }
-    }
-  },
-  {
     "id": "95101747-7da7-4f8e-8ede-beca5b98f204",
     "title": "New Discord party started",
     "validSince": "2024-07-16T17:02:00+02:00",
