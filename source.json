@@ -1,16 +1,5 @@
 [
   {
-    "id": "95101747-7da7-4f8e-8ede-beca5b98f204",
-    "title": "New Discord party started",
-    "validSince": "2024-07-16T17:02:00+02:00",
-    "validUntil": "2024-07-23T17:02:00+02:00",
-    "description": "New party with topic \"Make Me a Sandwich\" has been started on Discord. Click this notification to go over there.",
-    "link": "https://discord.com/channels/781145214752129095/1262786341092069428/1262786344502034472",
-    "channels": [
-      "parties"
-    ]
-  },
-  {
     "id": "59844a9c-b505-4530-9b6c-0f640877d772",
     "title": "New Discord party started",
     "validSince": "2024-07-22T06:57:00+02:00",
