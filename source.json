@@ -9,5 +9,11 @@
     "channels": [
       "parties"
     ]
+  },
+  {
+    "id": "9ab52403-0698-4dd1-880a-019bdc282e5a",
+    "title": "Test",
+    "validSince": "2024-07-25T15:00:00Z",
+    "validUntil": "2024-07-26T15:00:00Z"
   }
 ]
