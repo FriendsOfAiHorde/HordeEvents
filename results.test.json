@@ -1,0 +1,22 @@
+[
+  {
+    "id": "31f8f06f-5f19-4986-911a-314a64576a28",
+    "title": "Test",
+    "validSince": "2024-07-25T15:00:00Z",
+    "validUntil": "2024-07-26T15:00:00Z",
+    "limitedTo": [
+      "test"
+    ]
+  },
+  {
+    "id": "59844a9c-b505-4530-9b6c-0f640877d772",
+    "title": "New Discord party started",
+    "validSince": "2024-07-22T04:57:00Z",
+    "validUntil": "2024-07-30T04:57:00Z",
+    "description": "New party with topic \"Juggernaut XL\" has been started on Discord. Click this notification to go over there.",
+    "link": "https://discord.com/channels/781145214752129095/1265170962681434176/1265170966636658792",
+    "channels": [
+      "parties"
+    ]
+  }
+]
