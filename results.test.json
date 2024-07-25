@@ -1,14 +1,5 @@
 [
   {
-    "id": "31f8f06f-5f19-4986-911a-314a64576a28",
-    "title": "Test",
-    "validSince": "2024-07-25T15:00:00Z",
-    "validUntil": "2024-07-26T15:00:00Z",
-    "limitedTo": [
-      "test"
-    ]
-  },
-  {
     "id": "25bccb74-1e82-4471-b05c-e7b8ce88b314",
     "title": "Test",
     "validSince": "2024-07-25T15:00:00Z",
