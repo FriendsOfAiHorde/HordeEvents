@@ -12,6 +12,18 @@
     ]
   },
   {
+    "id": "e3539a33-479a-474f-9e20-fe3b77dba2ef",
+    "title": "Test",
+    "validSince": "2024-07-25T15:00:00Z",
+    "validUntil": "2024-07-26T15:00:00Z",
+    "limitedTo": [
+      "test"
+    ],
+    "channels": [
+      "other"
+    ]
+  },
+  {
     "id": "59844a9c-b505-4530-9b6c-0f640877d772",
     "title": "New Discord party started",
     "validSince": "2024-07-22T04:57:00Z",
