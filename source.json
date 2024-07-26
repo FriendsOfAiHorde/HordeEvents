@@ -9,29 +9,5 @@
     "channels": [
       "parties"
     ]
-  },
-  {
-    "id": "7b36eedb-c7c2-47eb-ad3b-8e2618baeee5",
-    "title": "Test",
-    "validSince": "2024-07-25T15:00:00Z",
-    "validUntil": "2024-07-26T15:00:00Z",
-    "limitedTo": [
-      "test"
-    ],
-    "channels": [
-      "other"
-    ]
-  },
-  {
-    "id": "e3539a33-479a-474f-9e20-fe3b77dba2ef",
-    "title": "Test",
-    "validSince": "2024-07-25T15:00:00Z",
-    "validUntil": "2024-07-26T15:00:00Z",
-    "limitedTo": [
-      "test"
-    ],
-    "channels": [
-      "other"
-    ]
   }
 ]
