@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "61e17749-5735-4653-995c-35625369e089",
+    "title": "New party started!",
+    "validSince": "2024-07-30T06:09:00Z",
+    "validUntil": "2024-08-06T06:09:00Z",
+    "description": "A new Discord party called \"Unstable Diffusers XL\" was started.",
+    "link": "https://discord.com/channels/781145214752129095/1267725638899601511/1267725643857268776",
+    "channels": [
+      "parties"
+    ]
+  }
+]
