@@ -1,5 +1,29 @@
 [
   {
+    "id": "09c7e068-c8e7-4e11-bd38-f503a862b6c7",
+    "title": "New shortcut in HordeNG",
+    "validSince": "2024-08-04T14:45:00Z",
+    "validUntil": "2024-08-11T14:45:00Z",
+    "description": "When on the Generate page, you can now press CTRL+Enter to submit the form and start generating your image.",
+    "limitedTo": [
+      "horde-ng"
+    ],
+    "channels": [
+      "frontend-news"
+    ],
+    "data": {
+      "horde-ng": {
+        "desktopOnly": true,
+        "translations": {
+          "cs": {
+            "description": "Když jste na stránce Generovat, můžete nyní zmáčknout CTRL+Enter pro odeslání formuláře a vygenerování obrázku.",
+            "title": "Nová klávesová zkratka v HordeNG"
+          }
+        }
+      }
+    }
+  },
+  {
     "id": "c2a9645c-1742-442b-a401-b3e77e83375f",
     "title": "New Discord party!",
     "validSince": "2024-08-03T08:46:00Z",
