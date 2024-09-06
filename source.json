@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "df50b09b-600e-4a93-b4ed-0744ee4f2b8a",
+    "title": "New Horde party started!",
+    "validSince": "2024-09-05T19:31:00+02:00",
+    "validUntil": "2024-09-08T19:31:00+02:00",
+    "description": "A new party called \"Math is hard\" has been started! So go ahead and show your mad math solving skills with the help of AI!",
+    "link": "https://discord.com/channels/781145214752129095/1281305803567005729/1281305806309953651",
+    "channels": [
+      "parties"
+    ]
+  }
+]
