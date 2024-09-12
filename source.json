@@ -20,5 +20,29 @@
     "channels": [
       "horde-news"
     ]
+  },
+  {
+    "id": "d38882cc-b71c-4c29-b6c9-27822b084a0c",
+    "title": "Flux beta on HordeNG",
+    "validSince": "2024-09-12T15:00:00Z",
+    "validUntil": "2024-09-16T15:00:00Z",
+    "description": "You can now try the Flux model on the Horde in a public beta! To make sure you use the model correctly, HordeNG will guide you if your generation parameters are out of range. If not, head over to the settings where you can clear the cache.",
+    "limitedTo": [
+      "horde-ng"
+    ],
+    "link": "/generate?request=ew0KICAicmVxdWVzdCI6IHsNCiAgICAibW9kZWwiOiAiRmx1eC4xLVNjaG5lbGwgZnA4IChDb21wYWN0KSINCiAgfQ0KfQ0K",
+    "channels": [
+      "frontend-news"
+    ],
+    "data": {
+      "horde-ng": {
+        "translations": {
+          "cs": {
+            "description": "V Hordě si nyní můžete vyzkoušet model Flux ve veřejné betě! Abyste měli jistotu, že model používáte správně, HordeNG vám ukáže, když vyplníte parametry špatně. Pokud se tak nestane, zajděte si do nastavení a vymažte cache.",
+            "title": "Flux beta na HordeNG"
+          }
+        }
+      }
+    }
   }
 ]
