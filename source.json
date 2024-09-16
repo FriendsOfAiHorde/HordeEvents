@@ -33,5 +33,30 @@
         }
       }
     }
+  },
+  {
+    "id": "5326bdc6-05b7-434c-af54-04ee8810069a",
+    "title": "Share images directly from HordeNG",
+    "validSince": "2024-09-16T14:00:00+02:00",
+    "validUntil": "2024-09-23T15:00:00+02:00",
+    "description": "In the image gallery of previously generated images you can now share an image with the click of one button! The image will be uploaded into a temporary storage and the link to that image will be copied to your clipboard. The link expires after 24 hours.",
+    "limitedTo": [
+      "horde-ng"
+    ],
+    "link": "/images",
+    "channels": [
+      "frontend-news"
+    ],
+    "data": {
+      "horde-ng": {
+        "requiredVersion": "1b15648d1f00f4c926e86d0d1198a11ea393216d",
+        "translations": {
+          "cs": {
+            "description": "V galerii obrázků nyní můžete sdílet obrázky jedním kliknutím! Obrázek bude nahrán na dočasné uložiště a odkaz na něj bude zkopírován do vaší stránky. Odkaz po 24 hodinách vyprší.",
+            "title": "Sdílejte obrázky přímo z HordeNG"
+          }
+        }
+      }
+    }
   }
 ]
