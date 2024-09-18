@@ -14,7 +14,6 @@
     ],
     "data": {
       "horde-ng": {
-        "requiredVersion": "1b15648d1f00f4c926e86d0d1198a11ea393216d",
         "translations": {
           "cs": {
             "description": "V galerii obrázků nyní můžete sdílet obrázky jedním kliknutím! Obrázek bude nahrán na dočasné uložiště a odkaz na něj bude zkopírován do vaší stránky. Odkaz po 24 hodinách vyprší.",
