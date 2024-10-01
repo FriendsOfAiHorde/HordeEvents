@@ -11,30 +11,6 @@
     ]
   },
   {
-    "id": "4a40d3fc-2cef-46d0-97f7-91cc55e7d716",
-    "title": "Toggle to (dis)allow extra slow workers",
-    "validSince": "2024-09-23T12:00:00+02:00",
-    "validUntil": "2024-09-30T12:00:00+02:00",
-    "description": "When generating an image, you now can toggle Extra slow workers (at the bottom, with the other toggles) which allows even very slow workers to take your job. If you're in no rush, consider enabling it to help with the AI Horde health.",
-    "limitedTo": [
-      "horde-ng"
-    ],
-    "channels": [
-      "frontend-news"
-    ],
-    "data": {
-      "horde-ng": {
-        "requiredVersion": "773992349c96a56a65e2df5a41a659c84970aaf9",
-        "translations": {
-          "cs": {
-            "description": "Při generování obrázků můžete nyní zapnout Velmi pomalé workery (dole, s ostatními přepínači), což umožní i velmi pomalým workerům zpracovat váš požadavek. Pokud nespěcháte, zvažte, že možnost zapnete, čímž pomůžete se zdravím AI Hordy.",
-            "title": "Přepínač na zapnutí/vypnutí velmi pomalých workerů"
-          }
-        }
-      }
-    }
-  },
-  {
     "id": "dcaf16d7-3d0a-4e0c-a021-4280cb89f766",
     "title": "Flux officially out on the AI Horde!",
     "validSince": "2024-09-25T15:00:00Z",
