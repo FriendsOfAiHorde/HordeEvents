@@ -9,26 +9,5 @@
     "channels": [
       "horde-news"
     ]
-  },
-  {
-    "id": "dcaf16d7-3d0a-4e0c-a021-4280cb89f766",
-    "title": "Flux officially out on the AI Horde!",
-    "validSince": "2024-09-25T15:00:00Z",
-    "validUntil": "2024-10-02T15:00:00Z",
-    "description": "Flux on the Horde is out of beta and you can officially use it! Click this notification to read a blog post about it.",
-    "link": "https://dbzer0.com/blog/flux-schnell-on-the-ai-horde/",
-    "channels": [
-      "horde-news"
-    ],
-    "data": {
-      "horde-ng": {
-        "translations": {
-          "cs": {
-            "description": "Flux na Hordě je venku z bety a můžete jej oficiálně používat! Klikněte na tuto notifikaci, pokud si o tom chcete přečíst blogový příspěvek (v angličtině).",
-            "title": "Flux oficiálně na AI Hordě!"
-          }
-        }
-      }
-    }
   }
 ]
