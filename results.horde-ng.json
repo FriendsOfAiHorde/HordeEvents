@@ -1,5 +1,30 @@
 [
   {
+    "id": "e095f0cf-895a-47b7-bfe5-b5615631e4fd",
+    "title": "Worker messages on HordeNG",
+    "validSince": "2025-01-27T22:56:00Z",
+    "validUntil": "2025-02-03T22:56:00Z",
+    "description": "You can now see messages sent to your worker directly in HordeNG! You can head over to settings to disable them if you don't wish to see them here.",
+    "limitedTo": [
+      "horde-ng"
+    ],
+    "link": "/settings#notifications",
+    "channels": [
+      "frontend-news"
+    ],
+    "data": {
+      "horde-ng": {
+        "requiredVersion": "2d8d744257a2295d61c57e0ae026d311a47d4d6e",
+        "translations": {
+          "cs": {
+            "description": "Nyní si můžete nechat zasílat zprávy pro workera přímo do HordeNG! Pokud nemáte zájem, můžete jít do nastavení a vypnout je.",
+            "title": "Zprávy pro workera na HordeNG"
+          }
+        }
+      }
+    }
+  },
+  {
     "id": "39a716d4-7036-410f-a1a5-5aa6473f37ab",
     "title": "Try out Flux without kudos!",
     "validSince": "2025-01-22T21:02:00Z",
