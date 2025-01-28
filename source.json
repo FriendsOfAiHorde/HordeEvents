@@ -35,7 +35,7 @@
     ],
     "data": {
       "horde-ng": {
-        "requiredVersion": "4f3424461b30c24a15d65114c663aefea21cdf21",
+        "requiredVersion": "23d4fc3e21fdf555bc83c8f85163ee45883a3989",
         "translations": {
           "cs": {
             "description": "Nyní si můžete nechat zasílat zprávy pro workera přímo do HordeNG! Pokud nemáte zájem, můžete jít do nastavení a vypnout je.",
@@ -60,7 +60,7 @@
     ],
     "data": {
       "horde-ng": {
-        "requiredVersion": "4f3424461b30c24a15d65114c663aefea21cdf21",
+        "requiredVersion": "23d4fc3e21fdf555bc83c8f85163ee45883a3989",
         "translations": {
           "cs": {
             "description": "Nyní si můžete na stránce Obrázky stáhnout zip archív se všemi vašimi obrázky!",
