@@ -43,30 +43,5 @@
         }
       }
     }
-  },
-  {
-    "id": "ed017549-4874-4e31-9b9f-3712b67332b5",
-    "title": "Sharing your shared keys",
-    "validSince": "2025-01-29T12:01:00+01:00",
-    "validUntil": "2025-02-05T12:01:00+01:00",
-    "description": "HordeNG now allows sharing your shared api keys with a single click! Simply expand the shared key you want to share and click the Share button.",
-    "limitedTo": [
-      "horde-ng"
-    ],
-    "link": "/horde",
-    "channels": [
-      "frontend-news"
-    ],
-    "data": {
-      "horde-ng": {
-        "requiredVersion": "1bc08707c6a4913f2b02f73422971e4510b495a7",
-        "translations": {
-          "cs": {
-            "description": "HordeNG nově umožňuje sdílení vašich sdílených klíčů jedním kliknutím! Jednoduše rozklikněte klíč, který chcete sdílet a klikěnte na tlačítko Sdílet.",
-            "title": "Sdílení vašich sdílených klíčů"
-          }
-        }
-      }
-    }
   }
 ]
