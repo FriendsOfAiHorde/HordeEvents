@@ -3,7 +3,7 @@
     "id": "aa2ab13a-94ab-4898-8c1c-0f939bd1dfbc",
     "title": "Export all images from HordeNG",
     "validSince": "2025-01-28T00:48:00+01:00",
-    "validUntil": "2025-08-28T00:48:00+01:00",
+    "validUntil": "2025-04-20T00:48:00+01:00",
     "description": "You can now head over to the Images page and download an archive with all of your images!",
     "limitedTo": [
       "horde-ng"
